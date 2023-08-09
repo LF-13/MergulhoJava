@@ -1,10 +1,13 @@
 package com.algaWords.banco.modelo;
 
+import java.time.LocalDateTime;
+
 public class Pessoa {
     private String nome;
     private String CPF;
     private Double rendimentoAnual;
     private final TipoPessoa tipoPessoa = TipoPessoa.JURIDICA;
+    private final LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
 
     public String getNome() {
         return nome;
@@ -32,5 +35,9 @@ public class Pessoa {
 
     public void setCPF(String CPF) {
         this.CPF = CPF;
+    }
+
+    public LocalDateTime getDataUltimaAtualizacao() {
+        return dataUltimaAtualizacao;
     }
 }

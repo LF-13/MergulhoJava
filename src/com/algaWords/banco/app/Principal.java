@@ -55,8 +55,9 @@ public class Principal {
         System.out.printf("%nTrabalhando com classe Wrapper Double: %.2f%n", titular1.getRendimentoAnual());
 
         //Trabalhando com Enum
-        System.out.printf("%nTrabalhando com Enum, para saber se o dono da conta é pessoa física ou jurídica: %s", titular1.getTipoPessoa());
+        System.out.printf("%nTrabalhando com Enum, para saber se o dono da conta é pessoa física ou jurídica: %s%n%n", titular1.getTipoPessoa());
 
-
+        //Trabalhando com API Date and Time e com a classe LocalDateTime, com o padrão (ISO 8601).
+        System.out.println("Data e hora da última atualização dos dados na conta: "+ titular1.getDataUltimaAtualizacao()+"padrão ISO");
     }
 }
