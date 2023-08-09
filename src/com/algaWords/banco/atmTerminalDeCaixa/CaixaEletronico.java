@@ -9,7 +9,7 @@ public class CaixaEletronico {
         System.out.println("Títular: " + conta.getTitular().getNome());
         System.out.println("Agencia: " + conta.getAgencia());
         System.out.println("Número: " + conta.getNumero());
-        System.out.println("Limite de crédito: " + conta.getValorDeLimite());
+        System.out.println("Limite de crédito: " + conta.getSaldoDisponivel());
         System.out.println("Saldo da Conta: " + conta.getSaldo());
     }
 

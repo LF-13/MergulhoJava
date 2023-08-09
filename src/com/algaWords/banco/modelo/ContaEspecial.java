@@ -1,30 +1,35 @@
 package com.algaWords.banco.modelo;
 
+import java.math.BigDecimal;
+
 public class ContaEspecial extends Conta {
-    private double credito;
+    private BigDecimal valorLimite;
 
-    public ContaEspecial(Pessoa titular, int agencia, int numero, double credito) {
+
+    public ContaEspecial(Pessoa titular, int agencia, int numero, BigDecimal credito) {
         super(titular, agencia, numero);
-        this.credito = credito;
-    }
-
-    public double getCredito() {
-        return credito;
-    }
-
-    public void setCredito(double credito) {
-        this.credito = credito;
+        this.valorLimite = credito;
     }
 
     @Override
     public void debilitarTarifaMensal() {
-        sacar(20);
+        sacar(new BigDecimal("20"));
     }
 
     @Override
-    public double getValorDeLimite() {
-        return getSaldo() + getCredito();
+    public BigDecimal getSaldoDisponivel() {
+        return getSaldo().add(getValorLimite());
 
     }
+
+    public BigDecimal getValorLimite() {
+        return valorLimite;
+    }
+
+    public void setValorLimite(BigDecimal valorLimite) {
+        this.valorLimite = valorLimite;
+    }
+
+
 
 }

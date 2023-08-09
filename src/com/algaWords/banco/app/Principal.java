@@ -4,6 +4,11 @@ import com.algaWords.banco.atmTerminalDeCaixa.CaixaEletronico;
 import com.algaWords.banco.excecao.SaldoInsuficienteException;
 import com.algaWords.banco.modelo.*;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
+import static java.time.LocalDateTime.parse;
+
 public class Principal {
     public static void main(String[] args) {
 
@@ -20,21 +25,21 @@ public class Principal {
         CaixaEletronico caixaEletronico = new CaixaEletronico();
 
         ContaInvestimentos minhaConta = new ContaInvestimentos(titular1, 753, 78456);
-        ContaEspecial suaConta = new ContaEspecial(titular2, 123, 7895, 700);
+        ContaEspecial suaConta = new ContaEspecial(titular2, 123, 7895, new BigDecimal("700"));
 
         try {
-            minhaConta.depositar(30_000);
-            minhaConta.sacar(1_000);
-            minhaConta.creditarRendimento(0.8);
+            minhaConta.depositar(new BigDecimal("30000"));
+            minhaConta.sacar(new BigDecimal("1000"));
+            minhaConta.creditarRendimento(new BigDecimal("0.8"));
             minhaConta.debilitarTarifaMensal();
 
 
-            suaConta.depositar(15_000);
-            suaConta.sacar(1_000);
+            suaConta.depositar(new BigDecimal("15000"));
+            suaConta.sacar(new BigDecimal("1000"));
             suaConta.debilitarTarifaMensal();
 
-            Boleto boletoEscola = new Boleto(titular2, 35_000);
-            Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
+            Boleto boletoEscola = new Boleto(titular2, new BigDecimal("300"));
+            Holerite salarioFuncionario = new Holerite(titular2, new BigDecimal("100"), 160);
 
             caixaEletronico.pagar(boletoEscola, minhaConta);
             caixaEletronico.pagar(salarioFuncionario, minhaConta);
@@ -51,13 +56,23 @@ public class Principal {
         System.out.println();
         caixaEletronico.imprimirExtrato(suaConta);
 
-        titular1.setRendimentoAnual(42d);
-        System.out.printf("%nTrabalhando com classe Wrapper Double: %.2f%n", titular1.getRendimentoAnual());
+//        Trabalhando com classe Wrapper Double
+//        titular1.setRendimentoAnual(new BigDecimal("42d"));
+//        System.out.printf("%nTrabalhando com classe Wrapper Double: %.2f%n", titular1.getRendimentoAnual());
 
         //Trabalhando com Enum
-        System.out.printf("%nTrabalhando com Enum, para saber se o dono da conta é pessoa física ou jurídica: %s%n%n", titular1.getTipoPessoa());
+        System.out.printf("%nTrabalhando com Enum, para saber se o dono da conta é pessoa física ou jurídica: %s%n", titular1.getTipoPessoa());
 
         //Trabalhando com API Date and Time e com a classe LocalDateTime, com o padrão (ISO 8601).
-        System.out.println("Data e hora da última atualização dos dados na conta: "+ titular1.getDataUltimaAtualizacao()+"padrão ISO");
+        System.out.printf("%nData e hora da última atualização dos dados na conta:%s(PADRÃO ISO)%n", titular1.getDataUltimaAtualizacao());
+
+        //Trabalhando com API Date and Time e com a classe LocalDateTime, mas especificando uma hora e data manualmente.
+        titular2.setDataUltimaAtualizacao(LocalDateTime.parse("2023-08-10T17:15"));
+        System.out.printf("%nData e hora, mas especificando uma hora e data manualmente: %s%n", titular2.getDataUltimaAtualizacao());
+
+        //Trabalhando com BigDecimal
+        titular1.setRendimentoAnual(new BigDecimal("15000"));
+        System.out.printf("%nValor em BigDecimal: %.2f%n", titular1.getRendimentoAnual());
+
     }
 }

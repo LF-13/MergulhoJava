@@ -1,13 +1,14 @@
 package com.algaWords.banco.modelo;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class Pessoa {
     private String nome;
     private String CPF;
-    private Double rendimentoAnual;
+    private BigDecimal rendimentoAnual;
     private final TipoPessoa tipoPessoa = TipoPessoa.JURIDICA;
-    private final LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
+    private  LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
 
     public String getNome() {
         return nome;
@@ -21,11 +22,11 @@ public class Pessoa {
         return CPF;
     }
 
-    public Double getRendimentoAnual() {
+    public BigDecimal getRendimentoAnual() {
         return rendimentoAnual;
     }
 
-    public void setRendimentoAnual(Double rendimentoAnual) {
+    public void setRendimentoAnual(BigDecimal rendimentoAnual) {
         this.rendimentoAnual = rendimentoAnual;
     }
 
@@ -39,5 +40,10 @@ public class Pessoa {
 
     public LocalDateTime getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
+        
+    }
+
+    public void setDataUltimaAtualizacao(LocalDateTime dataUltimaAtualizacao) {
+        this.dataUltimaAtualizacao = dataUltimaAtualizacao;
     }
 }
