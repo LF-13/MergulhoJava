@@ -52,7 +52,10 @@ public class Principal {
         caixaEletronico.imprimirExtrato(suaConta);
 
         titular1.setRendimentoAnual(42d);
-        System.out.printf("%nTrabalhado com classe Wrapper Double: %.2f", titular1.getRendimentoAnual());
+        System.out.printf("%nTrabalhando com classe Wrapper Double: %.2f%n", titular1.getRendimentoAnual());
+
+        //Trabalhando com Enum
+        System.out.printf("%nTrabalhando com Enum, para saber se o dono da conta é pessoa física ou jurídica: %s", titular1.getTipoPessoa());
 
 
     }

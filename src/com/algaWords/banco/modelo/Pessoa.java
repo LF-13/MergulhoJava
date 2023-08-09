@@ -4,6 +4,7 @@ public class Pessoa {
     private String nome;
     private String CPF;
     private Double rendimentoAnual;
+    private final TipoPessoa tipoPessoa = TipoPessoa.JURIDICA;
 
     public String getNome() {
         return nome;
@@ -25,9 +26,11 @@ public class Pessoa {
         this.rendimentoAnual = rendimentoAnual;
     }
 
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
     public void setCPF(String CPF) {
         this.CPF = CPF;
-
-
     }
 }
