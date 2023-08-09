@@ -3,6 +3,7 @@ package com.algaWords.banco.modelo;
 public class Pessoa {
     private String nome;
     private String CPF;
+    private Double rendimentoAnual;
 
     public String getNome() {
         return nome;
@@ -16,7 +17,17 @@ public class Pessoa {
         return CPF;
     }
 
+    public Double getRendimentoAnual() {
+        return rendimentoAnual;
+    }
+
+    public void setRendimentoAnual(Double rendimentoAnual) {
+        this.rendimentoAnual = rendimentoAnual;
+    }
+
     public void setCPF(String CPF) {
         this.CPF = CPF;
+
+
     }
 }

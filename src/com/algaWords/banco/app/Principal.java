@@ -51,5 +51,9 @@ public class Principal {
         System.out.println();
         caixaEletronico.imprimirExtrato(suaConta);
 
+        titular1.setRendimentoAnual(42d);
+        System.out.printf("%nTrabalhado com classe Wrapper Double: %.2f", titular1.getRendimentoAnual());
+
+
     }
 }
