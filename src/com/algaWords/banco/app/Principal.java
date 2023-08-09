@@ -1,6 +1,7 @@
 package com.algaWords.banco.app;
 
 import com.algaWords.banco.atmTerminalDeCaixa.CaixaEletronico;
+import com.algaWords.banco.excecao.SaldoInsuficienteException;
 import com.algaWords.banco.modelo.*;
 
 public class Principal {
@@ -21,38 +22,34 @@ public class Principal {
         ContaInvestimentos minhaConta = new ContaInvestimentos(titular1, 753, 78456);
         ContaEspecial suaConta = new ContaEspecial(titular2, 123, 7895, 700);
 
+        try {
+            minhaConta.depositar(30_000);
+            minhaConta.sacar(1_000);
+            minhaConta.creditarRendimento(0.8);
+            minhaConta.debilitarTarifaMensal();
 
-        minhaConta.depositar(55_000);
-        minhaConta.sacar(1_000);
-        minhaConta.creditarRendimento(0.8);
-        minhaConta.debilitarTarifaMensal();
+
+            suaConta.depositar(15_000);
+            suaConta.sacar(1_000);
+            suaConta.debilitarTarifaMensal();
+
+            Boleto boletoEscola = new Boleto(titular2, 35_000);
+            Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
+
+            caixaEletronico.pagar(boletoEscola, minhaConta);
+            caixaEletronico.pagar(salarioFuncionario, minhaConta);
 
 
-        suaConta.depositar(15_000);
-        suaConta.sacar(15_000);
-        suaConta.debilitarTarifaMensal();
+            caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
 
-//
-//        System.out.printf("%nPolimorfismo ⬇%n");
-//        caixaEletronico.imprimirExtrato(minhaConta);
-//        System.out.println();
-//        caixaEletronico.imprimirExtrato(suaConta);
-//
-//        System.out.println();
-//        System.out.println("Saldo Total: " + minhaConta.getSaldo());
-        Boleto boletoEscola = new Boleto(titular2, 200);
-        caixaEletronico.pagar(boletoEscola, minhaConta);
-//        System.out.print("Boleto do Titular: " + minhaConta.getTitular().getNome() + ", Foi pago? " + boletoEscola.estaPago() + ", Saldo restante: " + minhaConta.getSaldo());
-
-        Holerite salarioFuncionario = new Holerite(titular2, 100, 160);
-        caixaEletronico.pagar(salarioFuncionario, minhaConta);
-        System.out.println("Salário para Holerite: " + salarioFuncionario.estaPago());
-
+            boletoEscola.imprimirRecebo();
+            salarioFuncionario.imprimirRecebo();
+        } catch (SaldoInsuficienteException e) {
+            System.out.println("Erro ao executar operação na conta: " + e.getMessage());
+        }
+        caixaEletronico.imprimirExtrato(minhaConta);
         System.out.println();
-        caixaEletronico.estornarPagamento(boletoEscola, minhaConta);
+        caixaEletronico.imprimirExtrato(suaConta);
 
-        boletoEscola.imprimirRecebo();
-        System.out.println();
-        salarioFuncionario.imprimirRecebo();
     }
 }

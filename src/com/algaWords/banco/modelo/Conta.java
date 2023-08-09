@@ -1,5 +1,7 @@
 package com.algaWords.banco.modelo;
 
+import com.algaWords.banco.excecao.SaldoInsuficienteException;
+
 public abstract class Conta {
 
     private Pessoa titular;
@@ -28,7 +30,7 @@ public abstract class Conta {
             throw new IllegalArgumentException("VALOR DEVE SER MAIOR QUE ZERO");
         }
         if (getValorDeLimite() - valor < 0) {
-            throw new IllegalStateException("SALDO INSUFICIENTE");
+            throw new SaldoInsuficienteException("SALDO INSUFICIENTE");
         }
         saldo = saldo - valor;
     }
@@ -62,7 +64,7 @@ public abstract class Conta {
         return saldo;
     }
 
-    public double getValorDeLimite(){
+    public double getValorDeLimite() {
         return getSaldo();
     }
 
