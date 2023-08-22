@@ -8,7 +8,15 @@ public class Pessoa {
     private String CPF;
     private BigDecimal rendimentoAnual;
     private final TipoPessoa tipoPessoa = TipoPessoa.JURIDICA;
-    private  LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
+    private LocalDateTime dataUltimaAtualizacao = LocalDateTime.now();
+
+    public Pessoa() {
+    }
+
+    public Pessoa(String nome, String CPF) {
+        this.nome = nome;
+        this.CPF = CPF;
+    }
 
     public String getNome() {
         return nome;
@@ -40,10 +48,18 @@ public class Pessoa {
 
     public LocalDateTime getDataUltimaAtualizacao() {
         return dataUltimaAtualizacao;
-        
+
     }
 
     public void setDataUltimaAtualizacao(LocalDateTime dataUltimaAtualizacao) {
         this.dataUltimaAtualizacao = dataUltimaAtualizacao;
+    }
+
+    @Override
+    public String toString() {
+        return "PESSOA{ " +
+                "nome:'" + nome + '\'' +
+                ", CPF:'" + CPF + '\'' +
+                ", tipoPessoa:" + tipoPessoa + " } ";
     }
 }
