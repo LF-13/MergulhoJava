@@ -2,6 +2,7 @@ package com.algaWords.banco.modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Pessoa {
     private String nome;
@@ -64,6 +65,11 @@ public class Pessoa {
     }
 
     @Override
+    public int hashCode() {
+        return Objects.hash(CPF);
+    }
+
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null) return false;
@@ -71,5 +77,8 @@ public class Pessoa {
 
         Pessoa pessoa = (Pessoa) obj;
         return CPF.equals(pessoa.CPF);
+
+
+
     }
 }

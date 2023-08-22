@@ -3,7 +3,9 @@ package com.algaWords.banco.app;
 import com.algaWords.banco.modelo.Pessoa;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Principal2 {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ public class Principal2 {
         Pessoa pessoa2 = new Pessoa("Maria", "444444444");
 
 
-        List<Pessoa> pessoas = new ArrayList<>();
+        Set<Pessoa> pessoas = new HashSet<>();
         pessoas.add(pessoa1);
         pessoas.add(pessoa2);
 //        System.out.println("toString: "+pessoas.toString());
