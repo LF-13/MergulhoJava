@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 
 import static java.time.LocalDateTime.parse;
 
-public class Principal {
+public class Principal1 {
     public static void main(String[] args) {
 
         Pessoa titular1 = new Pessoa();
