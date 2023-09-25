@@ -43,5 +43,6 @@ public class Principal4 {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.printf("%nSalto total de todas as contas no projeto: %.2f %n%n", saltoTotal);
 
+
     }
 }
