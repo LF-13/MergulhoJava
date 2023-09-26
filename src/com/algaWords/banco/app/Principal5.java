@@ -9,8 +9,11 @@ public class Principal5 {
     public static void main(String[] args) {
         Banco banco = new Banco();
 
-        Optional<Conta> contaOptional = banco.buscar(123, 1234);
-        contaOptional.ifPresent(conta -> System.out.println(conta.getSaldo()));
+//        Optional<Conta> contaOptional = banco.buscar(123, 1234);
+//        contaOptional.ifPresent(conta -> System.out.println(conta.getSaldo()));
 
+        Conta contaEncontrada = banco.buscar(123, 123)
+                .orElseThrow(() -> new RuntimeException("CONTA NÃO ENCONTRADA."));
+        System.out.println(contaEncontrada.getSaldo());
     }
 }
